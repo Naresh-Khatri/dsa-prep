@@ -53,6 +53,10 @@ void pushAt()
 }
 void pop()
 {
+    if(front ==  NULL){
+        cout<<"\nempty queue!";
+        return;
+    }
     Node *temp = front;
     if (front == NULL)
     {
@@ -62,13 +66,20 @@ void pop()
     front = front->next;
     free(temp);
 }
-void removeAt(){
+void removeAt()
+{
+    if(front ==  NULL){
+        cout<<"\nempty queue!";
+        return;
+    }
     int pos;
-    cout<<"Enter index: ";
-    cin>>pos;
+    cout << "Enter index: ";
+    cin >> pos;
     int i = 0;
     Node *temp1 = front;
-    while(i != pos){
+    //stop one node before desired node
+    while (i != pos - 1)
+    {
         temp1 = temp1->next;
         i++;
     }
@@ -88,15 +99,35 @@ void traverse()
     }
     cout << "NULL";
 }
+void reverse()
+{
+    if(front ==  NULL){
+        cout<<"\nempty queue!";
+        return;
+    }
+    Node *curr = front;
+    Node *next;
+    Node *prev = NULL;
+
+    while(curr != NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        cout<<"\n next "<<next;
+    }
+    front = prev;
+
+}
 
 int main()
 {
     int op;
     while (1)
     {
-        cout << "\n1.push\t2.pop\t3.traverse\t4.push_at\t5.remove_at\t6.exit:\t";
+        cout << "\n1.push\t2.pop\t3.traverse\t4.push_at\t5.remove_at\t6.reverse\t7.exit:\t";
         cin >> op;
-        if (op == 6)
+        if (op == 7)
             break;
         if (op == 1)
             push();
@@ -108,6 +139,8 @@ int main()
             pushAt();
         if (op == 5)
             removeAt();
+        if (op == 6)
+            reverse();
     }
     return 0;
 }
