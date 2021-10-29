@@ -3,12 +3,10 @@
 
 using namespace std;
 
-int main(){
-    
-    string s1 = "this is example string";
-    string s2 = "ths";
-
-    cout<<s1.find(s2);
-
+int main()
+{
+    // for(int i = 0; i<200; i++)
+    //     cout <<i<<": "<<(char) i<<endl;
+    cout<<(char) ('A' + 32);
     return 0;
 }
